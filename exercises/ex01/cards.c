@@ -1,15 +1,18 @@
-/* A program that counts cards.
+/*
+  A program that counts cards.
+  Adapted from Head First C, p37,
+  by Louise Nielsen.
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+  Finds value of played card.
+  Takes in name of played card.
+  Returns value of card.
+*/
 int value(char card_name[]) {
-  /*
-    Finds value of played card.
-    Takes in name of played card.
-    Returns value of card.
-  */
   int val = 0;
   switch(card_name[0]) {
     case 'K':
@@ -32,13 +35,13 @@ int value(char card_name[]) {
   return val;
 }
 
+/*
+  Updates the current count.
+  Takes in value of played card,
+  current count.
+  Returns updated count.
+*/
 int counter(int val, int count) {
-  /*
-    Updates the current count.
-    Takes in value of played card,
-    current count.
-    Returns updated count.
-  */
   if ((val > 2) && (val < 7)) {
     count++;
   } else if (val == 10) {
@@ -47,13 +50,13 @@ int counter(int val, int count) {
   return count;
 }
 
+/*
+  Main function.
+  Runs count in a loop.
+  Ends when user enters 'X' instead of
+  card name.
+*/
 int main() {
-  /*
-    Main function.
-    Runs count in a loop.
-    Ends when user enters 'X' instead of
-    card name.
-  */
   char card_name[3];
   int count = 0;
   while (card_name[0] != 'X') {
