@@ -1,7 +1,6 @@
 /*
   A program that counts cards.
-  Adapted from Head First C, p37,
-  by Louise Nielsen.
+  Adapted from Head First C, p37, by Louise Nielsen.
  */
 
 #include <stdio.h>
@@ -37,9 +36,7 @@ int value(char card_name[]) {
 
 /*
   Updates the current count.
-  Takes in value of played card,
-  current count.
-  Returns updated count.
+  Takes in value of played card and current count. Returns updated count.
 */
 int counter(int val, int count) {
   if ((val > 2) && (val < 7)) {
@@ -52,17 +49,16 @@ int counter(int val, int count) {
 
 /*
   Main function.
-  Runs count in a loop.
-  Ends when user enters 'X' instead of
-  card name.
+  Runs count in a loop, ends when user enters 'X' instead of card name.
 */
 int main() {
   char card_name[3];
+  int val;
   int count = 0;
   while (card_name[0] != 'X') {
     puts("Enter the card_name: ");
     scanf("%2s", card_name);
-    int val = value(card_name);
+    val = value(card_name);
     count = counter(val, count);
     printf("Current count: %i\n", count);
   }
