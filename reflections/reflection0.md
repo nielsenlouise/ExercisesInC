@@ -1,0 +1,1 @@
+Focus on the process of team formation and creating your first sprint backlog. For example, how did you each share your individual goals and combine them to form team goals? How did your team decide on a scrum master and divide other responsibilities? How did you decide what to include and omit from your sprint backlog? What are you still apprehensive about?
