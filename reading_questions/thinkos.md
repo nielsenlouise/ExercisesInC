@@ -5,18 +5,32 @@
 
 1) Give an example of a feature common in interpreted languages that is rare in compiled languages.
 
+Dynamic types are pretty common in interpreted languages.
+
 2) Name two advantages of static typing over dynamic typing.
+
+You know exactly what type the variable you declare is and it saves space to do so at compile time.
 
 3) Give an example of a static semantic error.
 
+Declaring `int x = "hello"` would probably make a static semantic error.
+
 4) What are two reasons you might want to turn off code optimization?
+
+Optimization might make some bugs you didn't see otherwise appear and using optimization increases compile time.
 
 5) When you run `gcc` with `-S`, why might the results look different on different computers?
 
-6) If you spell a variable name wrong, or if you spell a function name wrong, 
+The `-S` flag generates assembly code that is typically configured for the machine you're running on.
+
+6) If you spell a variable name wrong, or if you spell a function name wrong,
 the error messages you get might look very different.  Why?
 
+One is a syntax error and one is trying to use functions that don't exist.
+
 7) What is a segmentation fault?
+
+The result of trying to write or read from incorrect locations in memory during runtime.
 
 
 ## Chapter 2
@@ -26,14 +40,24 @@ the error messages you get might look very different.  Why?
 
 1) Give a real-world example of virtualization (ideally not one of the ones in the book).
 
+[]
+
 2) What is the difference between a program and a process?
+
+A process represents a running program. It's a data structure to keep track of the program.
 
 3) What is the primary purpose of the process abstraction?  What illusion does the process abstraction create?
 
+[]
+
 4) What is the kernel?
 
+[]
+
 5) What is a daemon?
- 
+
+Daemons are helpful, friendly processes that run in the background and help the operating system services.
+
 
 ## Chapter 3
 
@@ -58,7 +82,7 @@ Ignoring the details of the encoding scheme, how many different characters can b
 8) What is a context switch?
 
 In this directory, you should find a subdirectory named `aspace` that contains `aspace.c`.  Run it on your computer and compare your results to mine.
-  
+
 1) Add a second call to `malloc` and check whether the heap on your system grows up (toward larger addresses).  
 
 2) Add a function that prints the address of a local variable, and check whether the stack grows down.  
@@ -72,7 +96,7 @@ How much space is there between them?  Hint: Google knows how to subtract hexade
 
 ### Files and file systems
 
-1) What abstractions do file systems provide?  Give an example of something that is logically 
+1) What abstractions do file systems provide?  Give an example of something that is logically
 true about files systems but not true of their implementations.
 
 2) What information do you imagine is stored in an `OpenFileTableEntry`?
@@ -80,7 +104,7 @@ true about files systems but not true of their implementations.
 3) What are some of the ways operating systems deal with the relatively slow performance of persistent storage?
 
 4) Suppose your program writes a file and prints a message indicating that it is done writing.  
-Then a power cut crashes your computer.  After you restore power and reboot the computer, you find that the 
+Then a power cut crashes your computer.  After you restore power and reboot the computer, you find that the
 file you wrote is not there.  What happened?
 
 5) Can you think of one advantage of a File Allocation Table over a UNIX inode?  Or an advantage of a inode over a FAT?
@@ -90,7 +114,7 @@ file you wrote is not there.  What happened?
 7) Why is the "everything is a file" principle a good idea?  Why might it be a bad idea?
 
 If you would like to learn more about file systems, a good next step is to learn about journaling file systems.  
-Start with [this Wikipedia article](https://en.wikipedia.org/wiki/Journaling_file_system), then 
+Start with [this Wikipedia article](https://en.wikipedia.org/wiki/Journaling_file_system), then
 [Anatomy of Linux Journaling File Systems](http://www.ibm.com/developerworks/library/l-journaling-filesystems/index.html).  
 Also consider reading [this USENIX paper](https://www.usenix.org/legacy/event/usenix05/tech/general/full_papers/prabhakaran/prabhakaran.pdf).
 
@@ -100,16 +124,16 @@ Also consider reading [this USENIX paper](https://www.usenix.org/legacy/event/us
 
 ### Bits and bytes
 
-1) Suppose you have the value 128 stored as an unsigned 8-bit number.  What happens if you convert 
+1) Suppose you have the value 128 stored as an unsigned 8-bit number.  What happens if you convert
 it to a 16-bit number and accidentally apply sign extension?
 
-2) Write a C expression that computes the two's complement of 12 using the XOR bitwise operator. 
+2) Write a C expression that computes the two's complement of 12 using the XOR bitwise operator.
 Try it out and confirm that the result is interpreted as -12.
 
 3) Can you guess why IEEE floating-point uses biased integers to represent the exponent rather than a
 sign bit or two's complement?
 
-4) Following the example in Section 5.4, write the 32-bit binary representation of -13 in single precision 
+4) Following the example in Section 5.4, write the 32-bit binary representation of -13 in single precision
 IEEE floating-point.  What would you get if you accidentally interpreted this value as an integer?
 
 5) Write a function that takes a string and converts from lower-case to upper-case by flipping the sixth bit.  
@@ -142,12 +166,12 @@ e) Failing to free a chunk that is no longer needed.
 
     ps aux --sort rss
 
-to see a list of processes sorted by RSS, which is "resident set size", the amount of physical 
+to see a list of processes sorted by RSS, which is "resident set size", the amount of physical
 memory a process has.  Which processes are using the most memory?
 
 4) What's wrong with allocating a large number of small chunks?  What can you do to mitigate the problem?
 
-If you want to know more about how malloc works, read 
+If you want to know more about how malloc works, read
 [Doug Lea's paper about dlmalloc](http://gee.cs.oswego.edu/dl/html/malloc.html)
 
 
@@ -164,13 +188,13 @@ If you want to know more about how malloc works, read
 3) If cache access time is 1 ns and memory access time is 10 ns, what is the average
 access time of a program with hit rate 50%?  How about 90%?
 
-4) The book gives several examples of programming language features, like loops, that tend 
+4) The book gives several examples of programming language features, like loops, that tend
 to improve locality in the access pattern of instructions and/or data.  Can you think of other examples?  
 Or counter-examples that might decrease locality?
 
 5)  If you refactor a program to improve locality, would you say the program is "cache aware"?  Why not?
 
-6) See if you can estimate the cost of a memory cache by comparing the prices of two similar CPUs with 
+6) See if you can estimate the cost of a memory cache by comparing the prices of two similar CPUs with
 different cache sizes.
 
 7) Why are cache policies generally more complex at the bottom of the memory hierarchy?
@@ -249,7 +273,7 @@ the queue in an inconsistent state.
 8) Does the condition have to be true when you signal a condition variable?
 
 
- 
+
 ## Chapter 11
 
 
