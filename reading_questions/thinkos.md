@@ -48,11 +48,11 @@ A process represents a running program. It's a data structure to keep track of t
 
 3) What is the primary purpose of the process abstraction?  What illusion does the process abstraction create?
 
-[]
+It creates the illusion that every process is running continuously on its own space on the hard drive. This doesn't happen and process abstraction makes sure that all the processes don't mess each other up.
 
 4) What is the kernel?
 
-[]
+The kernel is makes core capabilities of the operating system like making threads.
 
 5) What is a daemon?
 
