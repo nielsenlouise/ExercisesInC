@@ -7,19 +7,23 @@ License: Creative Commons Attribution-ShareAlike 3.0
 #include <pthread.h>
 #include "mutex.h"
 
+// wrapper for pthread_mutex_t, defined in Pthread API
 Mutex *make_mutex()
 {
-    Mutex *mutex = (Mutex *) malloc(sizeof(Mutex));
-    pthread_mutex_init(mutex->mutex, NULL);
-    return mutex;
+  // allocate space for a pthread_mutex_t type
+  Mutex *mutex = (Mutex *) malloc(sizeof(Mutex));
+  pthread_mutex_init(mutex->mutex, NULL);
+  // return a pointer
+  return mutex;
 }
 
+// locking and unlocking: simple wrappers for pthreads functions.
 void mutex_lock(Mutex *mutex)
 {
-    pthread_mutex_lock(mutex->mutex);
+  pthread_mutex_lock(mutex->mutex);
 }
 
 void mutex_unlock(Mutex *mutex)
 {
-    pthread_mutex_unlock(mutex->mutex);
+  pthread_mutex_unlock(mutex->mutex);
 }

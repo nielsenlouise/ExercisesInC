@@ -60,10 +60,13 @@ void join_thread(pthread_t thread)
 
 void child_code(Shared *shared)
 {
+  // locks the mutex: bars all other threads
   mutex_lock(shared->mutex);
   printf("counter = %d\n", shared->counter);
   shared->counter++;
+  // unlocks the mutex
   mutex_unlock(shared->mutex);
+  // now the next thread can proceed
 }
 
 void *entry(void *arg)
