@@ -249,15 +249,15 @@ It can be used to pass a value to the thread that joins with another thread.
 
 4) Normally the same thread that created a thread also waits to join it.  What happens if another thread tries to join a thread it did not create?
 
-[]
+I don't know what happens in general, but in this code, the thread just has to wait until it's its turn.
 
 5) What goes wrong if several threads try to increment a shared integer at the same time?
 
-[]
+Several threads can read the same value before any of them increment it, so it doesn't really increment correctly (synchronization error).
 
 6) What does it mean to "lock a mutex"?
 
-[]
+You lock something while one thread is looking at it and then, once that thread is done, unlock it so the next thread can access it. Locking/unlocking/mutexes prevent synchronization errors.
 
 
 
