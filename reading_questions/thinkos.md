@@ -110,16 +110,14 @@ Address of p is | 0x1c3b010 | 0x1d5b010
 
 1) Add a second call to `malloc` and check whether the heap on your system grows up (toward larger addresses).  
 
-[]
+When I instantiate another variable with `malloc`, it's address is 0x1fb30a0, which is higher than what it was before.
 
 2) Add a function that prints the address of a local variable, and check whether the stack grows down.  
 
-[]
+Yup
 
 3) Choose a random number between 1 and 32, and allocate two chunks with that size.  
 How much space is there between them?  Hint: Google knows how to subtract hexadecimal numbers.
-
-[]
 
 
 ## Chapter 4
