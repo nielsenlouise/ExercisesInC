@@ -125,22 +125,34 @@ How much space is there between them?  Hint: Google knows how to subtract hexade
 
 ### Files and file systems
 
-1) What abstractions do file systems provide?  Give an example of something that is logically
-true about files systems but not true of their implementations.
+1) What abstractions do file systems provide?  Give an example of something that is logically true about files systems but not true of their implementations.
+
+It maps from file names to streams of bytes but is built on top of storage devices that are actually organized in blocks.
 
 2) What information do you imagine is stored in an `OpenFileTableEntry`?
 
+The file position, whether the file is reading or writing, and the address/name/whatever pointer(s) to the file. Probably. I don't actually know.
+
 3) What are some of the ways operating systems deal with the relatively slow performance of persistent storage?
 
+Block transfers (ask about this), prefetching (begin loading blocks before they are requested), buffering (only writing to disk once if block is modified several times in memory), and caching (keeping a copy in memory).
+
 4) Suppose your program writes a file and prints a message indicating that it is done writing.  
-Then a power cut crashes your computer.  After you restore power and reboot the computer, you find that the
-file you wrote is not there.  What happened?
+Then a power cut crashes your computer.  After you restore power and reboot the computer, you find that the file you wrote is not there.  What happened?
+
+The file was probably in a cache and not saved to disk yet and so was lost when the computer shut down.
 
 5) Can you think of one advantage of a File Allocation Table over a UNIX inode?  Or an advantage of a inode over a FAT?
 
+FATs do not require you to know the file size at the beginning and creates more space as you need it, but it is slow because you need to iterate through each one, like in a linked list.
+
 6) What is overhead?  What is fragmentation?
 
+Overhead is the amount of space used by a data structure in order to store data. Fragmentation is the unused space in blocks (either full or partially unused blocks).
+
 7) Why is the "everything is a file" principle a good idea?  Why might it be a bad idea?
+
+A lot of things use the file abstraction (the stream of bytes abstraction), like the UNIX pipe and network communication, so it's easier to understand for programmers and makes programs capable of working with data coming from other places. Not totally sure why it's a bad idea, but maybe something along the lines of why dynamic typing can be bad: it won't error at you when you're doing something horribly wrong/with something you really shouldn't be touching like that.
 
 If you would like to learn more about file systems, a good next step is to learn about journaling file systems.  
 Start with [this Wikipedia article](https://en.wikipedia.org/wiki/Journaling_file_system), then
