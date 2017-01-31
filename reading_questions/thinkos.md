@@ -66,29 +66,60 @@ Daemons are helpful, friendly processes that run in the background and help the 
 
 1) The Georgian alphabet has 33 letters.  How many bit are needed to specify a letter?
 
+6 bits (up to 64 values, but 5 bits is only 32, which is too few).
+
 2) In the UTF-16 character encoding, the binary representation of a character can take up to 32 bits.  
 Ignoring the details of the encoding scheme, how many different characters can be represented?
 
+2^32 (4294967296) characters.
+
 3) What is the difference between "memory" and "storage" as defined in Think OS?
+
+Memory is main memory, usually some kind of RAM, and holds data while a process is running. This is usually volatile and is lost when the computer shuts down. Memory is measured in binary units of bytes.
+
+Storage is usually stored on a HDD or a SSD. These are non-volatile, so it is long-term storage. Storage is measured in decimal units of bytes.
 
 4) What is the difference between a GiB and a GB?  What is the percentage difference in their sizes?
 
+A gibibyte (GiB) is 2^30 bytes. A gigabyte (GB) is 10^9 bytes. Difference between the decimal and binary equivalent value is 6.87%.
+
 5) How does the virtual memory system help isolate processes from each other?
+
+A process cannot access data from another process because the per-process thing that assigns physical addresses will never assign a virtual address that maps to memory allocated to a different process.
 
 6) Why do you think the stack and the heap are usually located at opposite ends of the address space?
 
+Things are allocated to both the stack and the heap during runtime, so it allows them to grow toward each other and use the amount of space they each need while also still probably keeping the addresses for things in the stack and the heap far away from each other. Maybe, I'm really not sure.
+
 7) What Python data structure would you use to represent a sparse array?
+
+Probably a dictionary, but I'm not totally sure what a sparse array is.
 
 8) What is a context switch?
 
+Context switch is when the operating system interrupts a running process, saves its state, and runs another process.
+
 In this directory, you should find a subdirectory named `aspace` that contains `aspace.c`.  Run it on your computer and compare your results to mine.
+
+ | Allen's Computer | My Computer
+--- | --- | ---
+Address of main is | 0x40057c | 0x4005d6
+Address of global is | 0x60104c | 0x60104c
+Address of local is | 0x7fffd26139c4 | 0x7fff0700aa1c
+Address of p is | 0x1c3b010 | 0x1d5b010
 
 1) Add a second call to `malloc` and check whether the heap on your system grows up (toward larger addresses).  
 
+[]
+
 2) Add a function that prints the address of a local variable, and check whether the stack grows down.  
+
+[]
 
 3) Choose a random number between 1 and 32, and allocate two chunks with that size.  
 How much space is there between them?  Hint: Google knows how to subtract hexadecimal numbers.
+
+[]
 
 
 ## Chapter 4
