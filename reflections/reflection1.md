@@ -6,8 +6,12 @@
 
 #### HFC exercises
 
+Completed exercises are found here:
+
 [ex01](../exercises/ex01)
+
 [ex02](../exercises/ex02)
+
 [ex02.5](../exercises/ex02.5)
 
 #### Reading questions
