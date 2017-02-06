@@ -24,4 +24,8 @@ Reading questions were completed inline on [this document](../reading_questions/
 
 ## Exam question
 
-[incomplete]
+Taken from reading ThinkOS 9. More relevant to the final exam than to the midterm for most of us.
+
+Q: Describe synchronization errors in threading: why they happen, and how mutexes can help.
+
+A: Synchronization errors occur because multiple threads will access the same variable at the same time. For example, if threads are iterating a variable, multiple threads will read the same value, iterate it, and write the same new value, thus creating unpredictable results. Mutexes prevent this: when a thread is iterating the variable, it uses a mutex function to lock the variable, reads the value, iterates the value, writes the new value, and unlocks the variable, now leaving it open for other threads to access. (This is applicable to purposes of threading other than iterating a single variable.)
